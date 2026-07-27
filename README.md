@@ -1,340 +1,766 @@
-Pacers Performance IQ
+# 🏀 Pacers Performance IQ
 
-An end-to-end basketball sports-performance intelligence platform for daily readiness review, athlete testing, markerless movement screening, game-performance context, and staff communication.
+### Integrated Athlete Readiness, Testing, Movement and Basketball Performance Intelligence Platform
 
-Unofficial portfolio project by Ritik Nehra. It is not affiliated with the Indiana Pacers, Pacers Sports & Entertainment, or the NBA. All athlete-monitoring, testing, wellness, and movement data included in the repository are synthetic and de-identified.
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![SQL](https://img.shields.io/badge/SQL-SQLite-lightgrey)](https://www.sqlite.org/)
+[![R](https://img.shields.io/badge/R-Statistical%20Analysis-blue)](https://www.r-project.org/)
+[![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-red)](https://streamlit.io/)
+[![MediaPipe](https://img.shields.io/badge/Computer%20Vision-MediaPipe-orange)](https://developers.google.com/mediapipe)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-Why this project is stronger than a typical basketball analytics notebook
+**Pacers Performance IQ** is an end-to-end basketball sports-performance intelligence platform designed to support daily athlete monitoring, physical testing, movement assessment, game-performance analysis and communication between sports-performance staff.
 
-Most public basketball projects stop at shot charts, player rankings, or game predictions. This project models the work of a sports performance intelligence function:
+The platform combines:
 
-Integrate daily workload, wellness, force-plate-style testing, movement screening, and game data.
+* Athlete workload data
+* Wellness and readiness questionnaires
+* Countermovement jump testing
+* Sprint and change-of-direction testing
+* Strength testing
+* Markerless movement analysis
+* Basketball game-performance data
+* SQL data engineering
+* Python and R analytics
+* Interactive dashboards
 
-Compare each athlete with their own recent baseline rather than a universal cutoff.
+> **Disclaimer:** This is an unofficial portfolio project created by **Ritik Nehra**. It is not affiliated with the Indiana Pacers, Pacers Sports & Entertainment or the NBA. All athlete-monitoring, testing, wellness and movement data in this repository are synthetic and de-identified.
 
-Estimate whether a test change is larger than normal measurement noise.
+---
 
-Surface an explainable staff action queue with data-confidence labels.
+## 📌 Project Objective
 
-Connect pregame context to game outcomes without making causal claims.
+The platform is designed to answer one important daily question:
 
-Track data quality, privacy classification, and model limitations.
+> **Which athletes need attention today, what changed, how confident are we in the signal and what should the performance staff examine next?**
 
-It demonstrates the combination of sports science reasoning, data engineering, statistical analysis, computer vision, SQL, R, Python, and dashboard design expected in a performance environment.
+The system provides decision support for sports-performance professionals.
 
-Staff question the system answers
+It does **not** provide:
 
-Who needs attention today, what changed, how confident are we, and what should staff review next?
+* Medical diagnoses
+* Injury predictions
+* Return-to-play clearance
+* Participation decisions
+* Automated medical recommendations
 
-The output is decision support—not a medical diagnosis, injury prediction, participation decision, or return-to-play clearance.
+---
 
-Portfolio evidence by skill area
+## 🚀 Why This Project Is Different
 
-Target skill
+Most public basketball analytics projects focus on:
 
-Evidence in this repository
+* Shot charts
+* Player rankings
+* Team comparisons
+* Game predictions
+* Box-score analysis
 
-Sports performance analytics
+Pacers Performance IQ models the broader responsibilities of a professional sports-performance intelligence department.
 
-Individualized readiness deviations, internal/external load, rolling exposure context, game-performance bridge
+The platform:
 
-Athlete testing and evaluation
+* Integrates workload, wellness, athlete testing, biomechanics and game data.
+* Compares athletes with their own recent baselines.
+* Evaluates whether testing changes exceed normal measurement noise.
+* Produces an explainable performance-staff action queue.
+* Displays confidence and data-quality indicators.
+* Connects pregame readiness with game performance without claiming causation.
+* Tracks data quality, privacy classification and analytical limitations.
 
-CMJ, 10 m sprint, 505 change of direction, IMTP-style metrics, trial CV, typical error, ICC workflow in R, measurement-aware change signals
+---
 
-Biomechanics and movement assessment
+## 🎯 Skills Demonstrated
 
-MediaPipe/OpenCV video pipeline, joint-angle time series, landing asymmetry, trunk lean, confidence filtering, annotated video output
+| Skill Area                           | Project Evidence                                                                                                                     |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Sports performance analytics         | Individual athlete baselines, readiness monitoring, internal and external load, rolling exposure trends and game-performance context |
+| Athlete testing and evaluation       | CMJ, 10-meter sprint, 505 change of direction, IMTP-style testing, trial CV, typical error and meaningful-change signals             |
+| Biomechanics and movement assessment | MediaPipe and OpenCV video analysis, joint-angle extraction, landing asymmetry, trunk lean and pose-confidence filtering             |
+| Data visualization                   | Interactive Streamlit dashboard and standalone HTML executive dashboard                                                              |
+| SQL                                  | Indexed SQLite warehouse, fact tables, analytical marts, reusable views and data-quality queries                                     |
+| Python                               | ETL, synthetic data generation, feature engineering, statistics, computer vision, visualization and automated testing                |
+| R                                    | ICC, CV, SEM, typical error and reliability visualizations                                                                           |
+| Communication                        | Explainable staff notes, reason codes, confidence labels, action queues and limitations                                              |
+| Data governance                      | Synthetic data classification, data-quality auditing, privacy notes and responsible-use documentation                                |
 
-Data visualization and dashboards
+---
 
-Interactive Streamlit application plus a self-contained HTML executive demo
+## 🏗️ System Architecture
 
-SQL
-
-Star-style SQLite warehouse, indexed fact/mart tables, reusable views, staff queries, data catalog
-
-Python
-
-Synthetic data generation, ETL, robust baseline features, testing analytics, visualization, computer vision, automated tests
-
-R
-
-Repeated-trial reliability analysis with ICC(2,1), CV, typical error, SEM, and smallest worthwhile change demonstration
-
-Communication and governance
-
-Staff action notes, reason codes, confidence levels, data-quality audit, explicit limitations and ethical controls
-
-System architecture
-
+```mermaid
 flowchart LR
-    A[Session load / tracking] --> E[Python ingestion and validation]
-    B[Wellness questionnaires] --> E
-    C[Athlete testing trials] --> E
-    D[Standardized movement video] --> V[MediaPipe pose pipeline]
+    A[Session Load and Tracking] --> E[Python Ingestion and Validation]
+    B[Wellness Questionnaires] --> E
+    C[Athlete Testing Trials] --> E
+    D[Standardized Movement Video] --> V[MediaPipe Pose Pipeline]
     V --> E
-    G[Public game data or demo box scores] --> E
+    G[Public or Synthetic Game Data] --> E
 
-    E --> W[(SQLite analytics warehouse)]
-    W --> F[Individual baselines and rolling features]
-    W --> T[Test reliability and meaningful-change layer]
-    W --> M[Movement-screening mart]
-    F --> Q[Explainable staff action queue]
+    E --> W[(SQLite Analytics Warehouse)]
+
+    W --> F[Individual Baselines and Rolling Features]
+    W --> T[Test Reliability and Meaningful Change]
+    W --> M[Movement Screening Mart]
+
+    F --> Q[Explainable Staff Action Queue]
     T --> Q
     M --> Q
-    Q --> S[Streamlit dashboard]
-    Q --> H[Standalone HTML dashboard]
-    W --> P[Power BI-ready model]
 
-Core analytical design
+    Q --> S[Streamlit Dashboard]
+    Q --> H[Standalone HTML Dashboard]
+    W --> P[Power BI Ready Model]
+```
 
-1. Individualized daily monitoring
+---
 
-For each athlete, the pipeline calculates leakage-safe robust z-scores from the previous 28 observations only. It evaluates:
+# 📊 Core Analytics Modules
 
-Sleep relative to the athlete's recent pattern
+## 1. Individualized Athlete Readiness Monitoring
 
-Fatigue and soreness deviations
+The system evaluates every athlete relative to their own previous observations rather than applying one universal threshold to the entire roster.
 
-External-load deviations
+For each athlete, the pipeline calculates leakage-safe robust z-scores using the previous 28 observations.
 
-Latest CMJ jump height and RSI-mod, carried forward for no more than seven days
+The current observation is excluded from its own baseline.
 
-Seven-day and 28-day exposure context
+### Readiness inputs
 
-A transparent score summarizes the components, but the dashboard always shows the primary contributing factor, source values, and data confidence. The first ten observations are labeled Building baseline rather than receiving a misleading score.
+* Sleep duration
+* Fatigue score
+* Muscle soreness
+* External workload
+* Countermovement jump height
+* Reactive Strength Index Modified
+* Seven-day workload
+* Twenty-eight-day workload
+* Testing recency
+* Data completeness
 
-2. Athlete testing and evaluation
+### Readiness classifications
 
-The synthetic testing system includes repeated trials for:
+Each athlete is classified as:
 
-Countermovement jump: jump height, RSI-mod, peak power per kg, countermovement depth, peak braking force per kg
+* **Normal**
+* **Monitor**
+* **Discuss**
+* **Building Baseline**
 
-10 m sprint time
+The first ten observations are labeled **Building Baseline** rather than producing an unreliable readiness score.
 
-505 change-of-direction time by side
+### Explainable output
 
-Isometric mid-thigh pull-style peak force per kg
+Each result includes:
+
+* Athlete readiness score
+* Primary contributing factor
+* Supporting values
+* Baseline comparison
+* Testing recency
+* Data-confidence level
+* Suggested staff-review note
+
+---
+
+## 2. Athlete Testing and Evaluation
+
+The testing module includes repeated trials for several common performance assessments.
+
+### Countermovement Jump
+
+Metrics include:
+
+* Jump height
+* RSI-mod
+* Peak power per kilogram
+* Countermovement depth
+* Peak braking force per kilogram
+
+### Sprint Testing
+
+* 10-meter sprint time
+
+### Change-of-Direction Testing
+
+* 505 left-side time
+* 505 right-side time
+* Inter-limb difference
+
+### Strength Testing
+
+* Isometric mid-thigh pull-style peak force per kilogram
+
+### Reliability and change analysis
 
 The analytical layer calculates:
 
-Session mean, standard deviation, and coefficient of variation
+* Session mean
+* Standard deviation
+* Coefficient of variation
+* Recent 28-day average
+* Between-session variation
+* Typical-error estimate
+* Standard error of measurement
+* Smallest worthwhile change
+* Number of baseline observations
 
-Recent 28-day mean and between-session variation
+A result is classified as:
 
-Typical-error estimate from trial variation
+* **Improved**
+* **Stable**
+* **Declined**
+* **Building Baseline**
 
-Smallest worthwhile change demonstration
+A change is only highlighted when it exceeds the larger measurement-aware threshold.
 
-Improved / Stable / Declined signals only when change exceeds the larger measurement-aware threshold
+---
 
-The R workflow adds ICC(2,1), SEM, pooled typical error, athlete-level CV summaries, and a reliability visualization.
+## 3. Biomechanics and Movement Assessment
 
-3. Biomechanics and movement screening
+The optional computer-vision module uses MediaPipe and OpenCV to process standardized athlete movement videos.
 
-src/biomechanics/pose_assessment.py uses the MediaPipe Tasks Pose Landmarker interface to process a standardized video and export:
+The module can be used with movements such as:
 
-Frame-by-frame left/right knee and hip angles
+* Drop jumps
+* Squats
+* Landing assessments
+* Change-of-direction drills
+* Single-leg movements
 
-Trunk lean from image vertical
+### Extracted features
 
-Knee-separation ratio
+* Left knee angle
+* Right knee angle
+* Left hip angle
+* Right hip angle
+* Trunk lean
+* Knee-separation ratio
+* Inter-limb knee-angle asymmetry
+* Pose-detection confidence
+* Frame-level movement data
 
-Inter-limb knee-angle asymmetry
+### Generated outputs
 
-Pose confidence
+* Annotated MP4 video
+* Frame-level CSV file
+* Trial-level JSON summary
+* Representative movement frame
+* Movement-screening score
+* Pose-confidence summary
 
-Transparent movement-screening score
+> The movement module is intended for screening and technical demonstration only. It is not a clinical diagnostic system.
 
-Annotated video and trial summary
+Camera angle, lighting, occlusion, frame rate and capture protocol can significantly affect markerless movement measurements.
 
-The module is deliberately labeled screening only. Camera standardization, visual review, metric reliability, and validation against a trusted reference system are required before operational use.
+---
 
-4. Game-performance bridge
+## 4. Basketball Game-Performance Bridge
 
-The platform joins pregame readiness context with a synthetic per-36 game-performance index, eFG%, minutes, usage, and other box-score-style features. The dashboard reports a descriptive association and states that it is not causal. Opponent, role, tactics, score state, and other confounders remain.
+The project connects pregame readiness information with synthetic game-performance data.
 
-5. Data quality and governance
+Example game variables include:
 
-The pipeline tracks:
+* Minutes played
+* Usage rate
+* Effective field-goal percentage
+* Points per 36 minutes
+* Assists per 36 minutes
+* Rebounds per 36 minutes
+* Turnovers
+* Composite game-performance index
 
-Primary-key completeness and duplicates
+The dashboard displays descriptive relationships between readiness and game performance.
 
-Overall missingness
+These relationships are not treated as causal because other factors may include:
 
-Data-source labels
+* Opponent quality
+* Player role
+* Tactical decisions
+* Score state
+* Rotation changes
+* Travel
+* Schedule density
+* Game context
 
-Synthetic/de-identified classification
+---
 
-Warehouse layer, source file, row count, and column count
+## 5. Data Quality and Governance
 
-Data-confidence status on staff-facing flags
+The platform tracks data quality across all source and analytical tables.
 
-Quick start
+### Data-quality checks
 
-Run the complete demo
+* Primary-key completeness
+* Duplicate records
+* Missing-value percentage
+* Invalid ranges
+* Source-table row counts
+* Analytical-table row counts
+* Column counts
+* Data-source labels
+* Synthetic-data classification
+* Staff-facing confidence status
 
+### Responsible-use principles
+
+* No real athlete medical data
+* No injury prediction
+* No medical diagnosis
+* No automated return-to-play recommendation
+* No universal athlete cutoff
+* No causal claims from descriptive associations
+* Transparent scoring logic
+* Visible data-quality limitations
+
+---
+
+# 🗄️ SQL Warehouse
+
+The project uses a star-style SQLite analytical warehouse.
+
+## Dimension Tables
+
+```text
+dim_athlete
+dim_game
+```
+
+## Source Fact Tables
+
+```text
+fact_session
+fact_wellness
+fact_test_trial
+fact_movement_trial
+fact_game_performance
+```
+
+## Analytical Marts
+
+```text
+mart_daily_status
+mart_team_daily
+mart_test_session
+mart_test_reliability
+mart_test_change
+mart_movement_session
+mart_game_readiness
+audit_data_quality
+```
+
+## Operational Views
+
+```text
+vw_latest_team_status
+vw_staff_action_queue
+vw_latest_test_signals
+vw_latest_movement
+vw_game_performance_bridge
+```
+
+Interview-ready SQL examples are available in:
+
+```text
+sql/03_analysis_queries.sql
+```
+
+---
+
+# 📁 Repository Structure
+
+```text
+pacers-performance-intelligence/
+│
+├── dashboard/
+│   └── app.py
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── docs/
+│   ├── PROJECT_OVERVIEW.md
+│   ├── VALIDATION_AND_ETHICS.md
+│   ├── POWER_BI_GUIDE.md
+│   └── INTERVIEW_GUIDE.md
+│
+├── models/
+│   └── README.md
+│
+├── outputs/
+│   ├── pacers_performance_iq_demo.html
+│   └── latest_staff_action_queue.csv
+│
+├── r/
+│   └── test_reliability.R
+│
+├── sql/
+│   ├── 01_schema.sql
+│   ├── 02_views.sql
+│   └── 03_analysis_queries.sql
+│
+├── src/
+│   ├── generate_demo_data.py
+│   ├── feature_engineering.py
+│   ├── build_warehouse.py
+│   ├── export_static_dashboard.py
+│   ├── run_pipeline.py
+│   │
+│   └── biomechanics/
+│       └── pose_assessment.py
+│
+├── tests/
+│   ├── test_features.py
+│   ├── test_pipeline.py
+│   └── test_data_quality.py
+│
+├── requirements.txt
+├── requirements-biomechanics.txt
+├── LICENSE
+└── README.md
+```
+
+---
+
+# ⚙️ Installation
+
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/Ritik7nehra/pacers-performance-intelligence.git
+cd pacers-performance-intelligence
+```
+
+## 2. Create a virtual environment
+
+### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### macOS or Linux
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+## 3. Install dependencies
+
+```bash
+python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
+```
+
+---
+
+# ▶️ Running the Complete Pipeline
+
+```bash
 python -m src.run_pipeline
+```
 
 This command:
 
-Generates a deterministic synthetic season.
+1. Generates a deterministic synthetic basketball season.
+2. Creates athlete workload and wellness data.
+3. Generates repeated athlete-testing trials.
+4. Creates synthetic movement-screening data.
+5. Generates player-game performance data.
+6. Builds individualized athlete baselines.
+7. Calculates testing reliability and meaningful-change signals.
+8. Builds the SQLite analytical warehouse.
+9. Creates staff-facing SQL views.
+10. Exports the standalone HTML dashboard.
+11. Exports the latest staff action queue.
 
-Builds individualized features and analytical marts.
+---
 
-Creates warehouse.sqlite and SQL views.
+# 📱 Running the Streamlit Dashboard
 
-Exports the standalone dashboard and latest staff action queue.
-
-Open the interactive dashboard
-
+```bash
 streamlit run dashboard/app.py
+```
 
-Open the no-server dashboard
+The application includes the following pages:
 
-Open:
+* Morning Board
+* Athlete 360
+* Testing Lab
+* Movement Assessment
+* Performance Bridge
+* Data Quality
 
+---
+
+# 🌐 Opening the Standalone Dashboard
+
+Open the following file in a web browser:
+
+```text
 outputs/pacers_performance_iq_demo.html
+```
 
-The HTML file is self-contained and includes its visualization library.
+The dashboard is self-contained and does not require a running server.
 
-Run tests
+---
 
+# 🧪 Running Automated Tests
+
+```bash
 python -m pytest
+```
 
-Run the R reliability workflow
+The automated tests validate:
 
+* Individual baseline calculations
+* Leakage prevention
+* Readiness-score ranges
+* Test-change classification
+* Data-quality checks
+* Warehouse creation
+* SQL-view creation
+* Pipeline outputs
+
+---
+
+# 📈 Running the R Reliability Analysis
+
+The R workflow calculates:
+
+* ICC(2,1)
+* Standard error of measurement
+* Typical error
+* Coefficient of variation
+* Athlete-level reliability
+* Smallest worthwhile change
+
+Run:
+
+```bash
 Rscript r/test_reliability.R \
   data/raw/testing_long.csv \
   outputs/r_reliability \
   jump_height_cm \
   CMJ
+```
 
-Analyze a movement video
+---
 
-Install the optional computer-vision dependencies, obtain an official compatible MediaPipe task model, and follow models/README.md.
+# 🎥 Running Movement-Video Analysis
 
+## 1. Install optional biomechanics dependencies
+
+```bash
 python -m pip install -r requirements-biomechanics.txt
+```
+
+## 2. Add a compatible MediaPipe model
+
+Follow the instructions in:
+
+```text
+models/README.md
+```
+
+## 3. Run the assessment
+
+```bash
 python -m src.biomechanics.pose_assessment \
   --video data/raw/drop_jump.mp4 \
   --model models/pose_landmarker_full.task \
   --athlete-id P01 \
   --date 2026-04-15
+```
 
-Warehouse model
+---
 
-Dimensions
+# 📋 Example Staff Action Queue
 
-dim_athlete
+| Athlete | Status            | Primary Factor            | Data Confidence | Suggested Review                                     |
+| ------- | ----------------- | ------------------------- | --------------- | ---------------------------------------------------- |
+| P03     | Discuss           | Elevated soreness         | High            | Review wellness response and recent workload         |
+| P08     | Monitor           | CMJ below baseline        | Medium          | Confirm testing quality and review recent jump trend |
+| P11     | Monitor           | Elevated seven-day load   | High            | Discuss recent exposure and planned training         |
+| P05     | Normal            | No major deviations       | High            | Continue normal monitoring                           |
+| P14     | Building Baseline | Insufficient observations | Low             | Continue data collection                             |
 
-dim_game
+---
 
-Source facts
+# 🖥️ Dashboard Pages
 
-fact_session
+## Morning Board
 
-fact_wellness
+Provides a team-level view of:
 
-fact_test_trial
+* Athlete readiness
+* Status classification
+* Main contributing factor
+* Data confidence
+* Staff-review notes
+* Team readiness distribution
 
-fact_movement_trial
+## Athlete 360
 
-fact_game_performance
+Displays:
 
-Analytical marts
+* Individual readiness trend
+* Workload history
+* Wellness responses
+* CMJ results
+* Personal baseline comparisons
+* Recent game-performance context
 
-mart_daily_status
+## Testing Lab
 
-mart_team_daily
+Displays:
 
-mart_test_session
+* Testing-session results
+* Trial variability
+* Meaningful-change classification
+* Reliability statistics
+* Athlete-specific testing trends
 
-mart_test_reliability
+## Movement Assessment
 
-mart_test_change
+Displays:
 
-mart_movement_session
+* Knee-angle trends
+* Hip-angle trends
+* Trunk lean
+* Asymmetry values
+* Pose confidence
+* Movement-screening summaries
 
-mart_game_readiness
+## Performance Bridge
 
-audit_data_quality
+Displays:
 
-Operational views
+* Pregame readiness
+* Minutes
+* Usage
+* Effective field-goal percentage
+* Per-36 performance
+* Descriptive readiness-performance relationships
 
-vw_latest_team_status
+## Data Quality
 
-vw_staff_action_queue
+Displays:
 
-vw_latest_test_signals
+* Missingness
+* Duplicate records
+* Table row counts
+* Validation status
+* Source classification
+* Analytical confidence
 
-vw_latest_movement
+---
 
-vw_game_performance_bridge
+# 💼 Resume Description
 
-See sql/03_analysis_queries.sql for interview-ready examples.
+## Pacers Performance IQ — Sports Performance Intelligence Platform
 
-Repository map
+**Python, SQL, R, Streamlit, MediaPipe, OpenCV, Plotly and SQLite**
 
-pacers-performance-intelligence/
-├── dashboard/app.py                  # Interactive staff dashboard
-├── data/raw/                         # Synthetic source tables
-├── data/processed/                   # Analytical marts
-├── docs/                             # Project, validation, Power BI, interview material
-├── models/README.md                  # MediaPipe model and capture setup
-├── outputs/                          # Standalone dashboard and staff queue
-├── r/test_reliability.R              # R measurement-quality workflow
-├── sql/                              # Schema, views, and analysis queries
-├── src/generate_demo_data.py         # Synthetic season generator
-├── src/feature_engineering.py        # Baselines, testing, movement, game bridge
-├── src/build_warehouse.py            # SQLite build and metadata catalog
-├── src/export_static_dashboard.py    # Self-contained HTML output
-├── src/biomechanics/pose_assessment.py
-└── tests/                            # Unit and integration checks
+* Engineered an end-to-end basketball performance intelligence platform integrating more than **21,000 synthetic records** across workload, wellness, repeated athlete testing, movement screening and player-game performance.
+* Developed individualized 28-day athlete baselines using robust z-scores, test-recency confidence and explainable readiness reason codes.
+* Created measurement-aware CMJ change detection using trial coefficient of variation, typical error and smallest-worthwhile-change logic.
+* Built a MediaPipe and OpenCV markerless movement-analysis pipeline that extracts lower-extremity joint angles, trunk lean, landing asymmetry and pose confidence.
+* Designed an indexed SQLite warehouse with analytical marts, reusable SQL views, staff action queues and automated data-quality checks.
+* Delivered insights through a Streamlit application, standalone HTML dashboard, Power BI-ready model and R reliability workflow.
 
-Suggested live demonstration
+---
 
-Open Morning board and explain the action queue.
+# 🗣️ Interview Explanation
 
-Select the lowest-scoring athlete and show the factor-level evidence.
+> I developed Pacers Performance IQ as a production-shaped sports-performance analytics project. It integrates daily athlete workload, wellness questionnaires, repeated physical testing, movement-video features and basketball game data into a SQL warehouse. Python creates individualized athlete baselines and an explainable morning staff queue, R evaluates test reliability, MediaPipe extracts movement features and Streamlit communicates the results through staff-focused dashboards. I intentionally avoided injury prediction and designed the platform to support rather than replace the judgment of sports-performance and medical professionals.
 
-Move to Testing lab and show why a change must exceed measurement noise.
+---
 
-Open Movement and explain confidence, camera protocol, and validation limits.
+# 🎬 Suggested Live Demonstration
 
-Show the SQL view behind the action queue.
+1. Open the **Morning Board**.
+2. Identify an athlete classified as **Discuss** or **Monitor**.
+3. Open the athlete’s **Athlete 360** profile.
+4. Explain the athlete-specific baseline and primary contributing factor.
+5. Open the **Testing Lab**.
+6. Show whether the athlete’s testing change exceeds measurement noise.
+7. Open the **Movement Assessment** page.
+8. Explain pose confidence and camera-protocol limitations.
+9. Show the SQL view behind the action queue.
+10. Finish with the **Data Quality** page.
 
-End with Data quality to demonstrate production awareness.
+This demonstration highlights:
 
-Interview summary
+* Sports-science reasoning
+* Statistical analysis
+* SQL and data engineering
+* Python development
+* Biomechanics
+* Dashboard design
+* Communication
+* Responsible analytics
 
-I built a synthetic but production-shaped basketball performance intelligence platform. It integrates daily load, wellness, repeated athlete testing, movement-video features, and game data into a SQL warehouse. Python creates individualized baseline deviations and an explainable staff queue; R evaluates trial reliability; MediaPipe extracts movement features; and Streamlit presents the results with confidence and governance controls. I intentionally avoided injury prediction and designed the system to support—not replace—performance and medical staff judgment.
+---
 
-Important limitations
+# ⚠️ Important Limitations
 
-No real Pacers athlete, health, medical, tracking, or practice data are used.
+* No real Indiana Pacers athlete data are used.
+* No medical, health, practice or tracking data from a professional team are included.
+* The scoring weights and thresholds are demonstration choices.
+* Operational thresholds would require stakeholder calibration.
+* The system requires prospective validation before real-world use.
+* Synthetic game outcomes cannot support real basketball conclusions.
+* Markerless two-dimensional measurements depend on camera setup and visibility.
+* Asymmetry is descriptive and must be interpreted carefully.
+* Readiness and game-performance associations are not evidence of causation.
+* A real deployment would require secure storage, role-based access, privacy review, audit logging and approved retention policies.
 
-The scoring weights and thresholds are demonstration choices requiring stakeholder calibration and prospective validation.
+---
 
-Synthetic game outcomes are useful for software demonstration, not basketball conclusions.
+# 🔮 Future Improvements
 
-Markerless 2D measures depend on camera plane, occlusion, lighting, frame rate, and model error.
+* Integrate live wearable-device data.
+* Add force-plate API ingestion.
+* Support player-tracking coordinates.
+* Add automated PDF athlete reports.
+* Implement PostgreSQL or Snowflake deployment.
+* Add Docker-based deployment.
+* Add MLflow experiment tracking.
+* Add role-based dashboard authentication.
+* Add Bayesian athlete-baseline models.
+* Add hierarchical team and position-group models.
+* Add longitudinal workload forecasting.
+* Validate markerless movement results against motion-capture systems.
+* Develop a Power BI production dashboard.
+* Add automated data-drift monitoring.
 
-Asymmetry is a descriptive feature; its reliability and interpretation are metric- and protocol-specific.
+---
 
-Association between monitoring variables and game performance is not evidence of causation.
+# 👨‍💻 Author
 
-Any operational system would require privacy review, role-based access, secure storage, audit logging, and approved data-retention policies.
+## Ritik Nehra
 
-Research and implementation foundations
+MS Computer Science
+Indiana University Indianapolis
 
-Official Pacers analytics role descriptions emphasize multi-source data integration, internal tools, analytical infrastructure, reporting, Python, SQL, Power BI, and communication with basketball staff.
+* GitHub: [github.com/Ritik7nehra](https://github.com/Ritik7nehra)
+* Focus areas: Machine Learning, Data Analytics, Computer Vision, Sports Analytics and Data Engineering
 
-MediaPipe Pose Landmarker supports image, video, and live-stream modes and returns image-coordinate and 3D world landmarks.
+---
 
-Recent validation work supports the promise of low-cost markerless movement capture while showing stronger agreement in sagittal-plane hip/knee measures than frontal or transverse measures.
+# 📄 License
 
-CMJ monitoring literature reinforces the importance of test reliability, CV/ICC, and caution around less reliable asymmetry variables.
+This project is available under the MIT License.
 
-Detailed sources and their design implications are listed in docs/VALIDATION_AND_ETHICS.md.
+See the `LICENSE` file for details.
+
+---
+
+# ⭐ Acknowledgment
+
+This project was created as a portfolio demonstration for sports-performance intelligence, basketball analytics and data-analytics opportunities.
+
+It is not affiliated with or endorsed by the Indiana Pacers, Pacers Sports & Entertainment or the NBA.
