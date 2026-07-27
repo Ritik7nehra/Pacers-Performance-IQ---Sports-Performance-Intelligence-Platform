@@ -658,26 +658,7 @@ Displays:
 
 ---
 
-# 💼 Resume Description
-
-## Pacers Performance IQ — Sports Performance Intelligence Platform
-
-**Python, SQL, R, Streamlit, MediaPipe, OpenCV, Plotly and SQLite**
-
-* Engineered an end-to-end basketball performance intelligence platform integrating more than **21,000 synthetic records** across workload, wellness, repeated athlete testing, movement screening and player-game performance.
-* Developed individualized 28-day athlete baselines using robust z-scores, test-recency confidence and explainable readiness reason codes.
-* Created measurement-aware CMJ change detection using trial coefficient of variation, typical error and smallest-worthwhile-change logic.
-* Built a MediaPipe and OpenCV markerless movement-analysis pipeline that extracts lower-extremity joint angles, trunk lean, landing asymmetry and pose confidence.
-* Designed an indexed SQLite warehouse with analytical marts, reusable SQL views, staff action queues and automated data-quality checks.
-* Delivered insights through a Streamlit application, standalone HTML dashboard, Power BI-ready model and R reliability workflow.
-
----
-
-# 🗣️ Interview Explanation
-
-> I developed Pacers Performance IQ as a production-shaped sports-performance analytics project. It integrates daily athlete workload, wellness questionnaires, repeated physical testing, movement-video features and basketball game data into a SQL warehouse. Python creates individualized athlete baselines and an explainable morning staff queue, R evaluates test reliability, MediaPipe extracts movement features and Streamlit communicates the results through staff-focused dashboards. I intentionally avoided injury prediction and designed the platform to support rather than replace the judgment of sports-performance and medical professionals.
-
----
+ 
 
 # 🎬 Suggested Live Demonstration
 
@@ -751,11 +732,6 @@ Indiana University Indianapolis
 
 ---
 
-# 📄 License
-
-This project is available under the MIT License.
-
-See the `LICENSE` file for details.
 
 ---
 
