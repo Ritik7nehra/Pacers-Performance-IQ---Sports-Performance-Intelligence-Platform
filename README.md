@@ -658,7 +658,9 @@ Displays:
 
 ---
 
- 
+## 📊 Dashboard
+# Local Example
+file:///D:/New%20downloads_2025-26/pacers_performance_iq_demo.html
 
 # 🎬 Suggested Live Demonstration
 
@@ -686,18 +688,6 @@ This demonstration highlights:
 
 ---
 
-# ⚠️ Important Limitations
-
-* No real Indiana Pacers athlete data are used.
-* No medical, health, practice or tracking data from a professional team are included.
-* The scoring weights and thresholds are demonstration choices.
-* Operational thresholds would require stakeholder calibration.
-* The system requires prospective validation before real-world use.
-* Synthetic game outcomes cannot support real basketball conclusions.
-* Markerless two-dimensional measurements depend on camera setup and visibility.
-* Asymmetry is descriptive and must be interpreted carefully.
-* Readiness and game-performance associations are not evidence of causation.
-* A real deployment would require secure storage, role-based access, privacy review, audit logging and approved retention policies.
 
 ---
 
